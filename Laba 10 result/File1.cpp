@@ -118,9 +118,9 @@ void writeTripSheetsToFile(const TripSheet arr[], int n, const string& filename)
     }
     // Запись заголовка
     outFile << left << setw(10) << "Номер"
-        << left << setw(20) << "Срок действия"
-        << left << setw(25) << "Оформил"
-        << left << setw(20) << "Транспорт" << endl;
+         << setw(20) << "Срок действия"
+         << setw(25) << "Оформил"
+         << setw(20) << "Транспорт" << endl;
     outFile << "--------------------------------------------------------" << endl;
     for (int i = 0; i < n; i++) {
         outFile << left << setw(10) << arr[i].sheetNumber
@@ -132,7 +132,7 @@ void writeTripSheetsToFile(const TripSheet arr[], int n, const string& filename)
     cout << "Данные записаны в файл " << filename << endl;
 }
 
-// Функция чтения путевых листов из текстового файла (упрощённый вариант)
+// Функция чтения путевых листов из текстового файла
 void readTripSheetsFromFile(TripSheet arr[], int& n, const string& filename) {
     ifstream inFile(filename);
     if (!inFile) {
@@ -145,7 +145,7 @@ void readTripSheetsFromFile(TripSheet arr[], int& n, const string& filename) {
     getline(inFile, dummy);
 
     n = 0;
-    while (!inFile.eof() && n < 100) { // максимум 100 записей
+    while (!inFile.eof()) {
         TripSheet ts;
         if (!(inFile >> ts.sheetNumber))
             break;
